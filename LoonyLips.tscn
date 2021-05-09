@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://LoonyLips.gd" type="Script" id=1]
 [ext_resource path="res://gfx/blackboard.jpg" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://LoonyLipsFont.tres" type="DynamicFont" id=4]
 [ext_resource path="res://gfx/blue_button11.png" type="Texture" id=5]
 [ext_resource path="res://gfx/blue_button12.png" type="Texture" id=6]
+[ext_resource path="res://Story.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -93,6 +94,23 @@ margin_right = 977.0
 margin_bottom = 68.0
 custom_fonts/font = SubResource( 2 )
 text = "OK"
+
+[node name="StoryBook" type="Node" parent="."]
+
+[node name="Story0" type="Node" parent="StoryBook"]
+script = ExtResource( 7 )
+prompts = PoolStringArray( "a name", "a noun", "an adverb", "an adjective" )
+story = "Once upon a time, someone called %s ate a %s flavored sandwich which made them feel all %s inside. It was a %s day!"
+
+[node name="Story1" type="Node" parent="StoryBook"]
+script = ExtResource( 7 )
+prompts = PoolStringArray( "a name", "a 4chan board", "something you would post on 4chan", "an emotion" )
+story = "There once was an Anon named %s, their favorite board on 4chan was %s. Everyday, Anon would post %s to %s other users of the website."
+
+[node name="Story2" type="Node" parent="StoryBook"]
+script = ExtResource( 7 )
+prompts = PoolStringArray( "a name", "a Reddit board", "something you would post on 4chan", "an emotion" )
+story = "There once was an Anon named %s, their favorite board on 4chan was %s. Everyday, Anon would post %s to %s other users of the website."
 
 [connection signal="text_entered" from="VBoxContainer/HBoxContainer/PlayerText" to="." method="_on_PlayerText_text_entered"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/TextureButton" to="." method="_on_TextureButton_pressed"]

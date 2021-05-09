@@ -3,21 +3,23 @@ extends Control
 #Global Variable - To be used in multiple functions
 var player_words = []
 #Array of dictionaries
-var template = [
-		{
-		"prompts" : ["a Name", "a noun", "adverb", "adjective"],
-		"story" : "Once upon a time, someone called %s ate a %s flavored sandwich which made them feel all %s inside. It was a %s day!"  
-		},
-		{
-		"prompts" : ["a Name", "a 4chan board", "something you would post on 4chan", "an emotion"],
-		"story" : "There once was an Anon named %s, their favorite board on 4chan was %s. Everyday, Anon would post %s to %s other users of the website."
-		},
-		{
-		"prompts" : ["a Name", "a 4chan board", "something you would post on 4chan", "an emotion"],
-		"story" : "There once was an Anon named %s, their favorite board on 4chan was %s. Everyday, Anon would post %s to %s other users of the website."
-		}
-		]
-var current_story
+#var template = [
+#		{
+#		"prompts" : ["a Name", "a noun", "adverb", "adjective"],
+#		"story" : "Once upon a time, someone called %s ate a %s flavored sandwich which made them feel all %s inside. It was a %s day!"  
+#		},
+#		{
+#		"prompts" : ["a Name", "a 4chan board", "something you would post on 4chan", "an emotion"],
+#		"story" : "There once was an Anon named %s, their favorite board on 4chan was %s. Everyday, Anon would post %s to %s other users of the website."
+#		},
+#		{
+#		"prompts" : ["a Name", "a 4chan board", "something you would post on 4chan", "an emotion"],
+#		"story" : "There once was an Anon named %s, their favorite board on 4chan was %s. Everyday, Anon would post %s to %s other users of the website."
+#		}
+#		]
+
+#Create an empty dictionary
+var current_story = {}
 
 #onready keyword allows us to store node locations in a variable.
 onready var PlayerText = $VBoxContainer/HBoxContainer/PlayerText
@@ -56,8 +58,14 @@ func _ready():
 
 func set_current_story():
 	randomize() #Init random number - shuffles numbers
+	var stories = $StoryBook.get_child_count() # gets size of Storybook children.
+	var selected_story = randi() % stories
+	#current story == dictionary -add a key called prompts
+	current_story.prompts = $StoryBook.get_child(selected_story).prompts
+	current_story.story = $StoryBook.get_child(selected_story).story
 	#picks random story by size of template.
-	current_story = template[randi() % template.size()]
+	#current_story = template[randi() % template.size()]
+	
 
 """Buttons and Enter_Key"""
 
