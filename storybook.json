@@ -1,0 +1,14 @@
+[
+{
+"prompts" : ["a Name", "a noun", "adverb", "adjective"],
+"story" : "Once upon a time, someone called %s ate a %s flavored sandwich which made them feel all %s inside. It was a %s day!"  
+},
+{
+"prompts" : ["a Name", "a 4chan board", "something you would post on 4chan", "an emotion"],
+"story" : "There once was an Anon named %s, their favorite board on 4chan was %s. Everyday, Anon would post %s to %s other users of the website."
+},
+{
+"prompts" : ["a Name", "a 4chan board", "something you would post on 4chan", "an emotion"],
+"story" : "There once was an Anon named %s, their favorite board on 4chan was %s. Everyday, Anon would post %s to %s other users of the website."
+}
+]

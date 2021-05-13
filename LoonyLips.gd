@@ -57,15 +57,33 @@ func _ready():
 	
 
 func set_current_story():
+	var stories = get_from_json("storybook.json")
 	randomize() #Init random number - shuffles numbers
-	var stories = $StoryBook.get_child_count() # gets size of Storybook children.
-	var selected_story = randi() % stories
+	current_story = stories[randi() % stories.size()]
+	
+	#var stories = $StoryBook.get_child_count() # gets size of Storybook children.
+	#var selected_story = randi() % stories
 	#current story == dictionary -add a key called prompts
-	current_story.prompts = $StoryBook.get_child(selected_story).prompts
-	current_story.story = $StoryBook.get_child(selected_story).story
+	#current_story.prompts = $StoryBook.get_child(selected_story).prompts
+	#current_story.story = $StoryBook.get_child(selected_story).story
 	#picks random story by size of template.
 	#current_story = template[randi() % template.size()]
 	
+
+"""Gets stories from JSON"""
+
+func get_from_json(filename):
+	#file read and write
+	var file = File.new()
+	file.open(filename, File.READ)
+	#read file as text
+	var text = file.get_as_text()
+	var data = parse_json(text)
+	#closes file 
+	file.close()
+	#returns data
+	return data
+
 
 """Buttons and Enter_Key"""
 
